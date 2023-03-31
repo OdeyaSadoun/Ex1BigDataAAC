@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+            color: #ee7878;
+        }
+
+        a {
+            color: blue;
+        }
+
+        footer {
+            font-size: smaller;
+        }
+
+        #more_info {
+            white-space: nowrap;
+        }
+
+        .info {
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #ee7878;
+            border: #ee7878;
+            color: white;
+        }
+    </style>
+    <script>
+        function calcResalt() {
+            var operator = document.getElementById('operators').value;
+            var num1 = parseInt(document.getElementById('num1').value);
+            var num2 = parseInt(document.getElementById('num2').value);
+            var result = 0;
+            console.log(operator)
+
+            if (!num1 || !num2) {
+                alert('You have to add two numbers!')
+            }
+            else {
+
+                switch (operator) {
+                    case 'plus':
+                        result = num1 + num2;
+                        break;
+
+                    case 'minus':
+                        result = num1 - num2;
+                        break;
+
+                    case 'multiple':
+                        result = num1 * num2;
+                        break;
+
+                    case 'division':
+                        if (num2 === 0) {
+                            result = 'could not divided by zero!'
+                        }
+                        else {
+                            result = num1 / num2;
+                        }
+                        break;
+                }
+
+                console.log(result);
+                document.getElementById('res').innerText = result;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h2>Calculator:</h2>
+    </header>
+    <div>
+        <p>pleas enter 2 numbers:</p>
+    </div>
+    <div>
+        <input type="number" name="num1" id="num1" required>
+        <select name="operators" id="operators">
+            <option value="plus">+</option>
+            <option value="minus">-</option>
+            <option value="multiple">*</option>
+            <option value="division">/</option>
+        </select>
+        <input type="number" name="num2" id="num2" required>
+        <button class="button" type="button" onclick="calcResalt()">=</button>
+        <label name="res" id="res"></label>
+    </div>
+    <div id="more_info">
+        <p class="info">To read more about the calculator </p>
+        <a class="info" href="https://en.wikipedia.org/wiki/Calculator">click here</a>
+    </div>
+    <footer>
+        <br>
+        <p>Created by Odeya Sadoun</p>
+    </footer>
+</body>
+
+</html>
+
+<!--
+Extras beyond what is required in the exercise:
+1. I added a division option - of course I checked the division by 0 option.
+2. I added a special font to the page.
+3. I divided the body into a header and a footer.
+4. I added a text align style for aligning the text to the center.
+5. I added color to the text instead of the deductive black.
+6. I added a link to Wikipedia.
+7. I arranged for 2 elements to be together in the same row - by using a style.
+8. I made sure that the result of the calculation would be in lable so that they could not enter values into it but only readonly.
+9. I added a requirement of required to the fields of the numbers so that it is mandatory to fill them with values.
+10. If the 2 values are not filled in, an alert pops up that updates about it and it is not possible to perform the calculation.
+11. I made sure that the type of the inputs were numbers so that no other values were entered there.
+12. When moving over the button, its color is changed by the event hover.
+-->
